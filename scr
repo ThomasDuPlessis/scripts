@@ -17,6 +17,9 @@ mkdir -p "${scr_dir}/${date}"
 # Name the screenshot
 scr="${scr_dir}/${date}/$(date +%F-%I-%M-%S).png"
 
+# play sound
+paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga 
+
 # Send the notification
 notify-send "Saved screenshot as ${scr/*\/}"
 

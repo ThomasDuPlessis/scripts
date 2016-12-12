@@ -14,6 +14,9 @@ esac
 
 current_vol="$(amixer -D pulse sget Master | grep -o -E "[[:digit:]]+%")"
 
+# play a little sound
+paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga 
+
 # The '-r' flag is from a patched version of 'libnotify'.
 # '-r' lets you replace notifications using the same id.
 notify-send -t 1 "Volume: ${current_vol/$'\n'*}"
