@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+arg=$1
+networks_managers="wicd NetworkManager"
+
+for m in $networks_managers;
+do
+    if [ $arg == $m ]; then
+        # echo "you gave us $m"
+        systemctl start $m
+    else
+        # echo "ignoring $m"
+        systemctl stop $m
+    fi
+done
