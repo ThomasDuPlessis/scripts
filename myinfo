@@ -15,4 +15,9 @@ while read line; do
     fi
 done < <(i3-msg -t get_workspaces | jshon -a -e name -u -p -e focused -u)
 
-notify-send -t 1 "Battery ${BAT}% ($STATUS)\n On Workspace $workspace"
+## Get memory usage.
+FREE=`free -m | grep Mem | awk 'NR 3 {gsub(/%/,""); print $3}'`
+MAX=`free -m | grep Mem | awk 'NR 2 {gsub(/%/,""); print $2}'`
+PERC=`echo $FREE*100/$MAX | bc`
+
+notify-send -t 1 "Battery: ${BAT}%\nMemory: ${PERC}% \nWorkspace: $workspace"
