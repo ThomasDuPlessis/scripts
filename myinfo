@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
+
+# Get workspace info
+workspace=0
+# jshon output: one field per line; first name then focues state, then
+# the next name, ...
+while read line; do
+    if [ "$line" = true ]; then
+        break # break if we found the active workspace 
+    else
+        workspace="$line" # evaluate the next workspace
+    fi
+done < <(i3-msg -t get_workspaces | jshon -a -e name -u -p -e focused -u)
+
+notify-send -t 1 "Battery ${BAT}% ($STATUS)\n On Workspace $workspace"
