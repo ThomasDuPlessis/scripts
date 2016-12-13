@@ -7,9 +7,10 @@
 # Depends on: xorg-xrandr, lemonbar, date
 
 # Options
-width="300"
+width="200"
 height="50"
-font="-*-dejavu sans mono-bold-r-*-*-*-*-100-100-*-*-*-*"
+font="-*-dejavu sans mono-medium-r-normal--*-200-*-200-200-*-iso10646-1"
+font="-*-dejavu sans mono-bold-r-normal--*-100-*-100-*-*-iso10646-1"
 
 # Get monitor width so we can center the bar.
 resolution="$(xrandr --nograb --current | awk '/\*/ {printf $1; printf "\n"}' | sort)"
