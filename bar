@@ -7,10 +7,11 @@
 # Depends on: xorg-xrandr, lemonbar, date
 
 # Options
-width="200"
-height="50"
-font="-*-dejavu sans mono-medium-r-normal--*-200-*-200-200-*-iso10646-1"
-font="-*-dejavu sans mono-bold-r-normal--*-100-*-100-*-*-iso10646-1"
+width="300"
+height="60"
+# font="-*-dejavu sans mono-bold-r-normal--*-100-*-100-*-*-iso10646-1"
+## Using this font requires the xft patch for lemonbar.
+font="DejaVu Sans Mono for Powerline-7"
 
 # Get monitor width so we can center the bar.
 resolution="$(xrandr --nograb --current | awk '/\*/ {printf $1; printf "\n"}' | sort)"
@@ -34,4 +35,4 @@ lemonbar -b -d -g "$geometry" -f "$font" -B "${1:-#f0f0f0}" -F "${2:-#000000}" -
 
 # Move lemonbar down a layer since '-d' on i3 has an always on top side-effect.
 sleep 1
-xdo lower -a "bar"
+# xdo lower -a "bar"
